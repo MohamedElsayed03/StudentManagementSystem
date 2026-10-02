@@ -40,6 +40,7 @@ namespace StudentManagementSystem.Service
                 return null;
             } 
 
+            updatestudnet.StudentId = student.StudentId;
             updatestudnet.FullName = student.FullName;
             updatestudnet.Email = student.Email;
             updatestudnet.DateOfBirth = student.DateOfBirth;
@@ -70,7 +71,7 @@ namespace StudentManagementSystem.Service
              
         }
 
-        public async Task<Student?> StudnetWithallEnrollmentsAsync(Student student)
+        public async Task<Student?> StudentWithallEnrollmentsAsync(Student student)
         {
             var result = await _context.Students.AsNoTracking()
                 .Include(c => c.Enrollments).FirstOrDefaultAsync(c => c.StudentId == student.StudentId);
