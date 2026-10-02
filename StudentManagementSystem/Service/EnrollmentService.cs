@@ -72,10 +72,7 @@ namespace StudentManagementSystem.Service
         }
         public async Task<List<Enrollment>> GetCoursesByStudentAsync(int studnetId)
         {
-            var student = await _context.Courses.FindAsync(studnetId);
-            if (student is null)
-                return null;
-
+            
             return await _context.Enrollments                       
                 .AsNoTracking()
                 .Include(e => e.Course)
